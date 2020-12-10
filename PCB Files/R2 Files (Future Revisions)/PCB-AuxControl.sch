@@ -609,6 +609,24 @@ high speed (Philips)</description>
 <text x="-6.46" y="-4.445" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <text x="7.73" y="-4.445" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
+<package name="KK-156-4" urn="urn:adsk.eagle:footprint:8078404/1" library_version="5">
+<description>&lt;b&gt;KK® 396 Header, Vertical, Friction Lock, 4 Circuits, Tin (Sn) Plating&lt;/b&gt;&lt;p&gt;&lt;a href =http://www.molex.com/pdm_docs/sd/026604040_sd.pdf&gt;Datasheet &lt;/a&gt;</description>
+<wire x1="7.77" y1="4.95" x2="5.97" y2="4.95" width="0.2032" layer="21"/>
+<wire x1="5.97" y1="4.95" x2="-5.945" y2="4.95" width="0.2032" layer="21"/>
+<wire x1="-5.945" y1="4.95" x2="-7.745" y2="4.95" width="0.2032" layer="21"/>
+<wire x1="-7.745" y1="4.95" x2="-7.745" y2="-4.825" width="0.2032" layer="21"/>
+<wire x1="-7.745" y1="-4.825" x2="7.77" y2="-4.825" width="0.2032" layer="21"/>
+<wire x1="7.77" y1="-4.825" x2="7.77" y2="4.95" width="0.2032" layer="21"/>
+<wire x1="-5.945" y1="2.525" x2="5.97" y2="2.525" width="0.2032" layer="21"/>
+<wire x1="5.97" y1="2.525" x2="5.97" y2="4.95" width="0.2032" layer="21"/>
+<wire x1="-5.945" y1="2.525" x2="-5.945" y2="4.95" width="0.2032" layer="21"/>
+<pad name="1" x="-5.94" y="0" drill="1.7" diameter="2.1844" shape="long" rot="R90"/>
+<pad name="2" x="-1.98" y="0" drill="1.7" diameter="2.1844" shape="long" rot="R90"/>
+<pad name="3" x="1.98" y="0" drill="1.7" diameter="2.1844" shape="long" rot="R90"/>
+<pad name="4" x="5.94" y="0" drill="1.7" diameter="2.1844" shape="long" rot="R90"/>
+<text x="-8.44" y="-4.445" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="9.71" y="-4.445" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
 </packages>
 <packages3d>
 <package3d name="KK-156-3" urn="urn:adsk.eagle:package:8078801/1" type="box" library_version="5">
@@ -621,6 +639,12 @@ high speed (Philips)</description>
 <description>&lt;b&gt;KK® 396 Header, Vertical, Friction Lock, 2 Circuits, Tin (Sn) Plating&lt;/b&gt;&lt;p&gt;&lt;a href =http://www.molex.com/pdm_docs/sd/026604020_sd.pdf&gt;Datasheet &lt;/a&gt;</description>
 <packageinstances>
 <packageinstance name="KK-156-2"/>
+</packageinstances>
+</package3d>
+<package3d name="KK-156-4" urn="urn:adsk.eagle:package:8078802/1" type="box" library_version="5">
+<description>&lt;b&gt;KK® 396 Header, Vertical, Friction Lock, 4 Circuits, Tin (Sn) Plating&lt;/b&gt;&lt;p&gt;&lt;a href =http://www.molex.com/pdm_docs/sd/026604040_sd.pdf&gt;Datasheet &lt;/a&gt;</description>
+<packageinstances>
+<packageinstance name="KK-156-4"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -691,6 +715,38 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <attribute name="OC_FARNELL" value="unknown" constant="no"/>
 <attribute name="OC_NEWARK" value="unknown" constant="no"/>
 <attribute name="POPULARITY" value="1" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="KK-156-4" urn="urn:adsk.eagle:component:8079130/3" prefix="X" uservalue="yes" library_version="5">
+<description>&lt;b&gt;KK 156 HEADER&lt;/b&gt;&lt;p&gt;
+Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
+<gates>
+<gate name="-1" symbol="MV" x="0" y="0" addlevel="always" swaplevel="1"/>
+<gate name="-2" symbol="M" x="0" y="-2.54" addlevel="always" swaplevel="1"/>
+<gate name="-3" symbol="M" x="0" y="-5.08" addlevel="always" swaplevel="1"/>
+<gate name="-4" symbol="M" x="0" y="-7.62" addlevel="always" swaplevel="1"/>
+</gates>
+<devices>
+<device name="" package="KK-156-4">
+<connects>
+<connect gate="-1" pin="S" pad="1"/>
+<connect gate="-2" pin="S" pad="2"/>
+<connect gate="-3" pin="S" pad="3"/>
+<connect gate="-4" pin="S" pad="4"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:8078802/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="MOLEX" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+<attribute name="POPULARITY" value="0" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -1232,14 +1288,18 @@ by exp-lbrs.ulp</description>
 <part name="U$2" library="Airquality_Sensor" library_urn="urn:adsk.eagle:library:16015176" deviceset="GND" device=""/>
 <part name="SWITCHB" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="KK-156-3" device="" package3d_urn="urn:adsk.eagle:package:8078801/1"/>
 <part name="MARQUEE" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="KK-156-3" device="" package3d_urn="urn:adsk.eagle:package:8078801/1"/>
+<part name="X1" library="con-molex" library_urn="urn:adsk.eagle:library:165" deviceset="KK-156-4" device="" package3d_urn="urn:adsk.eagle:package:8078802/1"/>
+<part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SUPPLY3" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VIN" device="" value="5VIN"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <wire x1="137.16" y1="147.32" x2="137.16" y2="66.04" width="0.4064" layer="90"/>
 <wire x1="137.16" y1="66.04" x2="137.16" y2="27.94" width="0.4064" layer="90"/>
-<wire x1="137.16" y1="27.94" x2="236.22" y2="27.94" width="0.4064" layer="90"/>
-<wire x1="236.22" y1="27.94" x2="340.36" y2="27.94" width="0.4064" layer="90"/>
+<wire x1="137.16" y1="27.94" x2="208.28" y2="27.94" width="0.4064" layer="90"/>
+<wire x1="208.28" y1="27.94" x2="294.64" y2="27.94" width="0.4064" layer="90"/>
+<wire x1="294.64" y1="27.94" x2="340.36" y2="27.94" width="0.4064" layer="90"/>
 <wire x1="340.36" y1="27.94" x2="340.36" y2="66.04" width="0.4064" layer="90"/>
 <wire x1="340.36" y1="66.04" x2="340.36" y2="114.3" width="0.4064" layer="90"/>
 <wire x1="340.36" y1="114.3" x2="340.36" y2="147.32" width="0.4064" layer="90"/>
@@ -1247,23 +1307,26 @@ by exp-lbrs.ulp</description>
 <wire x1="279.4" y1="147.32" x2="208.28" y2="147.32" width="0.4064" layer="90"/>
 <wire x1="208.28" y1="147.32" x2="137.16" y2="147.32" width="0.4064" layer="90"/>
 <wire x1="137.16" y1="66.04" x2="208.28" y2="66.04" width="0.4064" layer="90"/>
-<wire x1="208.28" y1="66.04" x2="236.22" y2="66.04" width="0.4064" layer="90"/>
-<wire x1="236.22" y1="66.04" x2="279.4" y2="66.04" width="0.4064" layer="90"/>
-<wire x1="279.4" y1="66.04" x2="340.36" y2="66.04" width="0.4064" layer="90"/>
-<wire x1="236.22" y1="66.04" x2="236.22" y2="27.94" width="0.4064" layer="90"/>
+<wire x1="208.28" y1="66.04" x2="279.4" y2="66.04" width="0.4064" layer="90"/>
+<wire x1="279.4" y1="66.04" x2="294.64" y2="66.04" width="0.4064" layer="90"/>
+<wire x1="294.64" y1="66.04" x2="340.36" y2="66.04" width="0.4064" layer="90"/>
+<wire x1="208.28" y1="66.04" x2="208.28" y2="27.94" width="0.4064" layer="90"/>
 <wire x1="208.28" y1="147.32" x2="208.28" y2="66.04" width="0.4064" layer="90"/>
 <wire x1="279.4" y1="147.32" x2="279.4" y2="114.3" width="0.4064" layer="90"/>
 <wire x1="279.4" y1="114.3" x2="279.4" y2="66.04" width="0.4064" layer="90"/>
 <wire x1="279.4" y1="114.3" x2="340.36" y2="114.3" width="0.4064" layer="90"/>
 <text x="138.938" y="143.764" size="2.1844" layer="91">Teensy 3.2:</text>
 <text x="138.43" y="62.484" size="2.1844" layer="91">Switch Headers:</text>
-<text x="237.49" y="62.992" size="2.1844" layer="91">Temp Sensor Headers:</text>
+<text x="209.55" y="62.992" size="2.1844" layer="91">Temp Sensor Headers:</text>
 <text x="281.178" y="110.998" size="2.1844" layer="91">Power Headers:</text>
 <text x="280.67" y="143.51" size="2.1844" layer="91">Marquee Header:</text>
 <text x="209.804" y="144.018" size="2.1844" layer="91">Fan Relays:</text>
 <text x="137.16" y="148.59" size="3.81" layer="91">AUX Control PCB R2</text>
-<text x="313.69" y="149.098" size="3.81" layer="91">PG 11/4/20</text>
-<text x="137.16" y="25.4" size="1.778" layer="91">11-4-2020 - (R2) - CHANGED MARQUEE MOLEX CONNECTOR FROM 2 PIN TO 3 PIN TO ADD 5V TO THE PLUG.</text>
+<text x="313.69" y="149.098" size="3.81" layer="91">PG 12/9/20</text>
+<text x="137.16" y="22.86" size="1.778" layer="91">11-4-2020 - (R2) - CHANGED MARQUEE MOLEX CONNECTOR FROM 2 PIN TO 3 PIN TO ADD 5V TO THE PLUG.
+12-9-2020 - (R2a) - ADDED HEADER FOR I2C 2X20 SCREEN</text>
+<wire x1="294.64" y1="66.04" x2="294.64" y2="27.94" width="0.4064" layer="90"/>
+<text x="295.91" y="62.992" size="2.1844" layer="91">Screen Header</text>
 </plain>
 <instances>
 <instance part="T2" gate="G$1" x="261.62" y="127" smashed="yes" rot="R270">
@@ -1300,24 +1363,24 @@ by exp-lbrs.ulp</description>
 <instance part="U$9" gate="G$1" x="142.24" y="71.12" smashed="yes">
 <attribute name="VALUE" x="140.716" y="68.58" size="1.27" layer="96"/>
 </instance>
-<instance part="UPPERTEMP" gate="-1" x="309.88" y="50.8" smashed="yes">
-<attribute name="NAME" x="312.42" y="50.038" size="1.524" layer="95"/>
-<attribute name="VALUE" x="309.118" y="52.197" size="1.778" layer="96"/>
+<instance part="UPPERTEMP" gate="-1" x="271.78" y="50.8" smashed="yes">
+<attribute name="NAME" x="274.32" y="50.038" size="1.524" layer="95"/>
+<attribute name="VALUE" x="271.018" y="52.197" size="1.778" layer="96"/>
 </instance>
-<instance part="UPPERTEMP" gate="-2" x="309.88" y="48.26" smashed="yes">
-<attribute name="NAME" x="312.42" y="47.498" size="1.524" layer="95"/>
+<instance part="UPPERTEMP" gate="-2" x="271.78" y="48.26" smashed="yes">
+<attribute name="NAME" x="274.32" y="47.498" size="1.524" layer="95"/>
 </instance>
-<instance part="UPPERTEMP" gate="-3" x="309.88" y="45.72" smashed="yes">
-<attribute name="NAME" x="312.42" y="44.958" size="1.524" layer="95"/>
+<instance part="UPPERTEMP" gate="-3" x="271.78" y="45.72" smashed="yes">
+<attribute name="NAME" x="274.32" y="44.958" size="1.524" layer="95"/>
 </instance>
-<instance part="SUPPLY7" gate="G$1" x="302.26" y="55.88" smashed="yes">
-<attribute name="VALUE" x="302.26" y="58.674" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY7" gate="G$1" x="264.16" y="55.88" smashed="yes">
+<attribute name="VALUE" x="264.16" y="58.674" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="U$7" gate="G$1" x="304.8" y="35.56" smashed="yes">
-<attribute name="VALUE" x="303.276" y="33.02" size="1.27" layer="96"/>
+<instance part="U$7" gate="G$1" x="266.7" y="35.56" smashed="yes">
+<attribute name="VALUE" x="265.176" y="33.02" size="1.27" layer="96"/>
 </instance>
-<instance part="U$8" gate="G$1" x="205.74" y="40.64" smashed="yes">
-<attribute name="VALUE" x="204.216" y="38.1" size="1.27" layer="96"/>
+<instance part="U$8" gate="G$1" x="182.88" y="43.18" smashed="yes">
+<attribute name="VALUE" x="181.356" y="40.64" size="1.27" layer="96"/>
 </instance>
 <instance part="UPPERFAN" gate="-1" x="251.46" y="88.9" smashed="yes" rot="R270">
 <attribute name="NAME" x="250.698" y="86.36" size="1.524" layer="95" rot="R270"/>
@@ -1353,21 +1416,21 @@ by exp-lbrs.ulp</description>
 <instance part="GND2" gate="1" x="213.36" y="86.36" smashed="yes">
 <attribute name="VALUE" x="210.82" y="83.82" size="1.778" layer="96"/>
 </instance>
-<instance part="LOWERTEMP" gate="-1" x="261.62" y="50.8" smashed="yes">
-<attribute name="NAME" x="264.16" y="50.038" size="1.524" layer="95"/>
-<attribute name="VALUE" x="260.858" y="52.197" size="1.778" layer="96"/>
+<instance part="LOWERTEMP" gate="-1" x="233.68" y="50.8" smashed="yes">
+<attribute name="NAME" x="236.22" y="50.038" size="1.524" layer="95"/>
+<attribute name="VALUE" x="232.918" y="52.197" size="1.778" layer="96"/>
 </instance>
-<instance part="LOWERTEMP" gate="-2" x="261.62" y="48.26" smashed="yes">
-<attribute name="NAME" x="264.16" y="47.498" size="1.524" layer="95"/>
+<instance part="LOWERTEMP" gate="-2" x="233.68" y="48.26" smashed="yes">
+<attribute name="NAME" x="236.22" y="47.498" size="1.524" layer="95"/>
 </instance>
-<instance part="LOWERTEMP" gate="-3" x="261.62" y="45.72" smashed="yes">
-<attribute name="NAME" x="264.16" y="44.958" size="1.524" layer="95"/>
+<instance part="LOWERTEMP" gate="-3" x="233.68" y="45.72" smashed="yes">
+<attribute name="NAME" x="236.22" y="44.958" size="1.524" layer="95"/>
 </instance>
-<instance part="SUPPLY6" gate="G$1" x="254" y="55.88" smashed="yes">
-<attribute name="VALUE" x="254" y="58.674" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY6" gate="G$1" x="226.06" y="55.88" smashed="yes">
+<attribute name="VALUE" x="226.06" y="58.674" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="U$3" gate="G$1" x="256.54" y="35.56" smashed="yes">
-<attribute name="VALUE" x="255.016" y="33.02" size="1.27" layer="96"/>
+<instance part="U$3" gate="G$1" x="228.6" y="35.56" smashed="yes">
+<attribute name="VALUE" x="227.076" y="33.02" size="1.27" layer="96"/>
 </instance>
 <instance part="SUPPLY9" gate="G$1" x="302.26" y="96.52" smashed="yes">
 <attribute name="VALUE" x="302.26" y="99.314" size="1.778" layer="96" align="bottom-center"/>
@@ -1381,15 +1444,15 @@ by exp-lbrs.ulp</description>
 <instance part="U$6" gate="G$1" x="309.88" y="119.38" smashed="yes">
 <attribute name="VALUE" x="308.356" y="116.84" size="1.27" layer="96"/>
 </instance>
-<instance part="SWITCHA" gate="-1" x="210.82" y="50.8" smashed="yes">
-<attribute name="NAME" x="213.36" y="50.038" size="1.524" layer="95"/>
-<attribute name="VALUE" x="210.058" y="52.197" size="1.778" layer="96"/>
+<instance part="SWITCHA" gate="-1" x="187.96" y="53.34" smashed="yes">
+<attribute name="NAME" x="190.5" y="52.578" size="1.524" layer="95"/>
+<attribute name="VALUE" x="187.198" y="54.737" size="1.778" layer="96"/>
 </instance>
-<instance part="SWITCHA" gate="-2" x="210.82" y="48.26" smashed="yes">
-<attribute name="NAME" x="213.36" y="47.498" size="1.524" layer="95"/>
+<instance part="SWITCHA" gate="-2" x="187.96" y="50.8" smashed="yes">
+<attribute name="NAME" x="190.5" y="50.038" size="1.524" layer="95"/>
 </instance>
-<instance part="SWITCHA" gate="-3" x="210.82" y="45.72" smashed="yes">
-<attribute name="NAME" x="213.36" y="44.958" size="1.524" layer="95"/>
+<instance part="SWITCHA" gate="-3" x="187.96" y="48.26" smashed="yes">
+<attribute name="NAME" x="190.5" y="47.498" size="1.524" layer="95"/>
 </instance>
 <instance part="5VIN" gate="-1" x="325.12" y="88.9" smashed="yes" rot="R180">
 <attribute name="NAME" x="322.58" y="89.662" size="1.524" layer="95" rot="R180"/>
@@ -1407,18 +1470,18 @@ by exp-lbrs.ulp</description>
 <attribute name="NAME" x="292.1" y="92.202" size="1.524" layer="95" rot="R180"/>
 <attribute name="VALUE" x="295.402" y="90.043" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="U$2" gate="G$1" x="154.94" y="40.64" smashed="yes">
-<attribute name="VALUE" x="153.416" y="38.1" size="1.27" layer="96"/>
+<instance part="U$2" gate="G$1" x="149.86" y="43.18" smashed="yes">
+<attribute name="VALUE" x="148.336" y="40.64" size="1.27" layer="96"/>
 </instance>
-<instance part="SWITCHB" gate="-1" x="160.02" y="50.8" smashed="yes">
-<attribute name="NAME" x="162.56" y="50.038" size="1.524" layer="95"/>
-<attribute name="VALUE" x="159.258" y="52.197" size="1.778" layer="96"/>
+<instance part="SWITCHB" gate="-1" x="154.94" y="53.34" smashed="yes">
+<attribute name="NAME" x="157.48" y="52.578" size="1.524" layer="95"/>
+<attribute name="VALUE" x="154.178" y="54.737" size="1.778" layer="96"/>
 </instance>
-<instance part="SWITCHB" gate="-2" x="160.02" y="48.26" smashed="yes">
-<attribute name="NAME" x="162.56" y="47.498" size="1.524" layer="95"/>
+<instance part="SWITCHB" gate="-2" x="154.94" y="50.8" smashed="yes">
+<attribute name="NAME" x="157.48" y="50.038" size="1.524" layer="95"/>
 </instance>
-<instance part="SWITCHB" gate="-3" x="160.02" y="45.72" smashed="yes">
-<attribute name="NAME" x="162.56" y="44.958" size="1.524" layer="95"/>
+<instance part="SWITCHB" gate="-3" x="154.94" y="48.26" smashed="yes">
+<attribute name="NAME" x="157.48" y="47.498" size="1.524" layer="95"/>
 </instance>
 <instance part="MARQUEE" gate="-1" x="314.96" y="134.62" smashed="yes">
 <attribute name="NAME" x="317.5" y="133.858" size="1.524" layer="95"/>
@@ -1429,6 +1492,25 @@ by exp-lbrs.ulp</description>
 </instance>
 <instance part="MARQUEE" gate="-3" x="314.96" y="124.46" smashed="yes">
 <attribute name="NAME" x="317.5" y="123.698" size="1.524" layer="95"/>
+</instance>
+<instance part="X1" gate="-1" x="325.12" y="50.8" smashed="yes">
+<attribute name="NAME" x="327.66" y="50.038" size="1.524" layer="95"/>
+<attribute name="VALUE" x="324.358" y="52.197" size="1.778" layer="96"/>
+</instance>
+<instance part="X1" gate="-2" x="325.12" y="48.26" smashed="yes">
+<attribute name="NAME" x="327.66" y="47.498" size="1.524" layer="95"/>
+</instance>
+<instance part="X1" gate="-3" x="325.12" y="45.72" smashed="yes">
+<attribute name="NAME" x="327.66" y="44.958" size="1.524" layer="95"/>
+</instance>
+<instance part="X1" gate="-4" x="325.12" y="43.18" smashed="yes">
+<attribute name="NAME" x="327.66" y="42.418" size="1.524" layer="95"/>
+</instance>
+<instance part="GND1" gate="1" x="314.96" y="38.1" smashed="yes">
+<attribute name="VALUE" x="312.42" y="35.56" size="1.778" layer="96"/>
+</instance>
+<instance part="SUPPLY3" gate="G$1" x="314.96" y="53.34" smashed="yes">
+<attribute name="VALUE" x="314.96" y="56.134" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 </instances>
 <busses>
@@ -1486,28 +1568,34 @@ by exp-lbrs.ulp</description>
 <pinref part="MARQUEE" gate="-1" pin="S"/>
 </segment>
 <segment>
-<wire x1="208.28" y1="50.8" x2="205.74" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="53.34" x2="182.88" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="SWITCHA" gate="-1" pin="S"/>
 <pinref part="U$8" gate="G$1" pin="GND"/>
-<wire x1="205.74" y1="43.18" x2="205.74" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="45.72" x2="182.88" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="LOWERTEMP" gate="-1" pin="S"/>
-<wire x1="259.08" y1="50.8" x2="256.54" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="50.8" x2="228.6" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="U$3" gate="G$1" pin="GND"/>
-<wire x1="256.54" y1="50.8" x2="256.54" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="50.8" x2="228.6" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="UPPERTEMP" gate="-1" pin="S"/>
-<wire x1="307.34" y1="50.8" x2="304.8" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="269.24" y1="50.8" x2="266.7" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="U$7" gate="G$1" pin="GND"/>
-<wire x1="304.8" y1="50.8" x2="304.8" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="50.8" x2="266.7" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="157.48" y1="50.8" x2="154.94" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="53.34" x2="149.86" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="SWITCHB" gate="-1" pin="S"/>
 <pinref part="U$2" gate="G$1" pin="GND"/>
-<wire x1="154.94" y1="43.18" x2="154.94" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="45.72" x2="149.86" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="X1" gate="-4" pin="S"/>
+<wire x1="322.58" y1="43.18" x2="314.96" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="314.96" y1="43.18" x2="314.96" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="GND1" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="LOWERFAN" class="0">
@@ -1547,8 +1635,8 @@ by exp-lbrs.ulp</description>
 <net name="TEMP2" class="0">
 <segment>
 <pinref part="UPPERTEMP" gate="-3" pin="S"/>
-<wire x1="307.34" y1="45.72" x2="292.1" y2="45.72" width="0.1524" layer="91"/>
-<label x="292.1" y="45.72" size="1.778" layer="95"/>
+<wire x1="269.24" y1="45.72" x2="254" y2="45.72" width="0.1524" layer="91"/>
+<label x="254" y="45.72" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="114.3" x2="187.96" y2="114.3" width="0.1524" layer="91"/>
@@ -1559,8 +1647,8 @@ by exp-lbrs.ulp</description>
 <net name="TEMP1" class="0">
 <segment>
 <pinref part="LOWERTEMP" gate="-3" pin="S"/>
-<wire x1="259.08" y1="45.72" x2="243.84" y2="45.72" width="0.1524" layer="91"/>
-<label x="243.84" y="45.72" size="1.778" layer="95"/>
+<wire x1="231.14" y1="45.72" x2="215.9" y2="45.72" width="0.1524" layer="91"/>
+<label x="215.9" y="45.72" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="116.84" x2="187.96" y2="116.84" width="0.1524" layer="91"/>
@@ -1632,20 +1720,27 @@ by exp-lbrs.ulp</description>
 </segment>
 <segment>
 <pinref part="LOWERTEMP" gate="-2" pin="S"/>
-<wire x1="259.08" y1="48.26" x2="254" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="48.26" x2="226.06" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="SUPPLY6" gate="G$1" pin="VIN"/>
-<wire x1="254" y1="55.88" x2="254" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="55.88" x2="226.06" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="UPPERTEMP" gate="-2" pin="S"/>
-<wire x1="307.34" y1="48.26" x2="302.26" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="269.24" y1="48.26" x2="264.16" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="SUPPLY7" gate="G$1" pin="VIN"/>
-<wire x1="302.26" y1="55.88" x2="302.26" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="55.88" x2="264.16" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="MARQUEE" gate="-3" pin="S"/>
 <wire x1="312.42" y1="124.46" x2="294.64" y2="124.46" width="0.1524" layer="91"/>
 <label x="294.64" y="124.46" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="X1" gate="-3" pin="S"/>
+<wire x1="322.58" y1="45.72" x2="314.96" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="314.96" y1="45.72" x2="314.96" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="SUPPLY3" gate="G$1" pin="VIN"/>
+<label x="317.5" y="45.72" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MARQUEE" class="0">
@@ -1676,8 +1771,8 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="SWB1" class="0">
 <segment>
-<wire x1="157.48" y1="48.26" x2="144.78" y2="48.26" width="0.1524" layer="91"/>
-<label x="144.78" y="48.26" size="1.778" layer="95"/>
+<wire x1="152.4" y1="50.8" x2="139.7" y2="50.8" width="0.1524" layer="91"/>
+<label x="139.7" y="50.8" size="1.778" layer="95"/>
 <pinref part="SWITCHB" gate="-2" pin="S"/>
 </segment>
 <segment>
@@ -1688,9 +1783,9 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="SWB2" class="0">
 <segment>
-<wire x1="157.48" y1="45.72" x2="144.78" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="48.26" x2="139.7" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="SWITCHB" gate="-3" pin="S"/>
-<label x="144.78" y="45.72" size="1.778" layer="95"/>
+<label x="139.7" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="B1" gate="G$1" pin="8/TX3"/>
@@ -1700,8 +1795,8 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="SWA1" class="0">
 <segment>
-<wire x1="208.28" y1="48.26" x2="195.58" y2="48.26" width="0.1524" layer="91"/>
-<label x="195.58" y="48.26" size="1.778" layer="95"/>
+<wire x1="185.42" y1="50.8" x2="172.72" y2="50.8" width="0.1524" layer="91"/>
+<label x="172.72" y="50.8" size="1.778" layer="95"/>
 <pinref part="SWITCHA" gate="-2" pin="S"/>
 </segment>
 <segment>
@@ -1712,14 +1807,38 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="SWA2" class="0">
 <segment>
-<wire x1="208.28" y1="45.72" x2="195.58" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="48.26" x2="172.72" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="SWITCHA" gate="-3" pin="S"/>
-<label x="195.58" y="45.72" size="1.778" layer="95"/>
+<label x="172.72" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="200.66" y1="119.38" x2="187.96" y2="119.38" width="0.1524" layer="91"/>
 <label x="193.04" y="119.38" size="1.778" layer="95"/>
 <pinref part="B1" gate="G$1" pin="1/TX1"/>
+</segment>
+</net>
+<net name="DAT" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="A4/18/SDA0"/>
+<wire x1="187.96" y1="132.08" x2="198.12" y2="132.08" width="0.1524" layer="91"/>
+<label x="193.04" y="132.08" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="X1" gate="-2" pin="S"/>
+<wire x1="322.58" y1="48.26" x2="312.42" y2="48.26" width="0.1524" layer="91"/>
+<label x="317.5" y="48.26" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CLK" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="A5/19/SCL0"/>
+<wire x1="187.96" y1="129.54" x2="198.12" y2="129.54" width="0.1524" layer="91"/>
+<label x="193.04" y="129.54" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="X1" gate="-1" pin="S"/>
+<wire x1="322.58" y1="50.8" x2="312.42" y2="50.8" width="0.1524" layer="91"/>
+<label x="317.5" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -1728,6 +1847,10 @@ by exp-lbrs.ulp</description>
 </schematic>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
