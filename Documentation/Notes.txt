@@ -1,6 +1,0 @@
-Arcade Emulators that need to be setup seperately:
-1. mame4all - Battle Zone
-2. lr-mame2003 - Bucky O Hare
-3. lr-mame2003-midway - NBA Hangtime
-4. lr-mame2010 - Aztarac
-5. lr-mame - Cybertank
