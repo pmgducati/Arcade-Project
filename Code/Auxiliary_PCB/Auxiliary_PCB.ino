@@ -33,29 +33,31 @@ int Flicker_Low[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 int MQ_Bright[] = {230, 200, 172, 145, 115, 80, 58, 25, 0};
 
 //Variable Assignments
-unsigned long time;                 //Time for Millis
+unsigned long Cycle_Time;                 //Time for Millis
 //Marquee Variables
-int Marquee_Flicker_Status = 1;     //Trigger Flicker at Boot, Set to 0 to Disable
-int Marquee_Sw_Status;              //Current Status of Marquee Switch
-int Marquee_Sw_Last_Status;         //Last Status of Marquee Switch
-int Marquee_Brightness = 0;         //Counter for Marquee Brightness Steps
-int Marquee_EEProm = 0;             //EEPROM Address used to Store Last Marquee Brighness
+int Marquee_Flicker_Status = 1;           //Trigger Flicker at Boot, Set to 0 to Disable
+int Marquee_Sw_Status;                    //Current Status of Marquee Switch
+int Marquee_Sw_Last_Status;               //Last Status of Marquee Switch
+int Marquee_Brightness = 0;               //Counter for Marquee Brightness Steps
+int Marquee_EEProm = 0;                   //EEPROM Address used to Store Last Marquee Brighness
 //Temp Sensor Variables
-int Temp_Last_Read = 0;             //Time (Millis) of last Temp Read
-int Temp_Trigger = 80;              //Tempature to Trigger Fans On/Off
-int Over_Temp_Trigger  = 85;        //Tempature to Trigger Warning
-int Temp_Delay_Read = 2000;         //Delay Between Temp Reads
-float Temp_Read_Upper;              //Upper Temp Sensor Reading
-float Temp_Read_Lower;              //Lower Temp Sensor Reading
+unsigned long Temp_Last_Read = 0;         //Time (Millis) of last Temp Read
+int Temp_Trigger = 80;                    //Tempature to Trigger Fans On/Off
+int Over_Temp_Trigger  = 91;              //Tempature to Trigger Warning
+unsigned long Temp_Delay_Read = 2000;     //Delay Between Temp Reads
+float Temp_Read_Upper;                    //Upper Temp Sensor Reading
+float Temp_Read_Lower;                    //Lower Temp Sensor Reading
 //Fan Switch Variables
-int Fan_Sw_Toggle_Last_Status = 1;  //Last Status of Fan Switch
-int Fan_Sw_Toggle_Last_State = 1;   //State to Disable Temp Sensors from Turning off Fans
-int Fan_Sw_Toggle_Status;           //Current Status of Fan Switch
+int Fan_Sw_Toggle_Last_Status = 1;        //Last Status of Fan Switch
+int Fan_Sw_Toggle_Last_State = 1;         //State to Disable Temp Sensors from Turning off Fans
+int Fan_Sw_Toggle_Status;                 //Current Status of Fan Switch
+unsigned long Fan_Timer;                  //Time (Milis) of when fans were turned on
+unsigned long Fan_Write_Delay = 360000;   //Delay before fans turn off once the temp is less than Temp_Trigger
 //EEPROM Variables
-int EEPROM_Timer;                   //Time (Millis) of Last Marquee Change     
-int EEPROM_Write_Delay = 15000;     //Delay before EEPROM Write to prevent to many writes to one address
-int EEPROM_Current_Value = 0;       //Current EEPROM Value
-int EEPROM_Confirm_Flash = 250;     //Milliseconds for Flash on EEPROM Write Confirm
+unsigned long EEPROM_Timer;               //Time (Millis) of Last Marquee Change     
+unsigned long EEPROM_Write_Delay = 15000; //Delay before EEPROM Write to prevent to many writes to one address
+int EEPROM_Current_Value = 0;             //Current EEPROM Value
+int EEPROM_Confirm_Flash = 250;           //Milliseconds for Flash on EEPROM Write Confirm
 
 //Temp Assignments
 DHT TempUpper(Temp_Upper, DHTTYPE);
@@ -109,17 +111,17 @@ void loop() {
   }
 
 //Start Reading Inputs
-  time = millis();
+  Cycle_Time = millis();
   Marquee_Sw_Status = digitalRead(Sw_Marquee);
   Fan_Sw_Toggle_Status = digitalRead(Sw_Fan);
-  if ((Temp_Last_Read + Temp_Delay_Read) < time) {
+  if ((Temp_Last_Read + Temp_Delay_Read) < Cycle_Time) {
     Temp_Read_Upper = TempUpper.readTemperature(true);
     Temp_Read_Lower = TempLower.readTemperature(true);
-    Temp_Last_Read = time;
+    Temp_Last_Read = Cycle_Time;
   }
 
 //Screen Temp & Fan Status Display
-  if ((EEPROM_Timer + EEPROM_Write_Delay) < time && Marquee_Brightness != EEPROM_Current_Value) {
+  if ((EEPROM_Timer + EEPROM_Write_Delay) < Cycle_Time && Marquee_Brightness != EEPROM_Current_Value) {
     lcd.setCursor(0, 0);
     lcd.print("EEPROM SAVE     ");
     lcd.setCursor(0, 1);
@@ -155,7 +157,7 @@ void loop() {
       lcd.setCursor(12, 1);
       lcd.print(" (*)");
     }
-    else {//if (Temp_Read_Upper <Temp_Trigger && Temp_Read_Lower < Temp_Trigger && Fan_Sw_Toggle_Last_State == 1) {
+    else {
       lcd.setCursor(12, 0);
       lcd.print(" (+)");
       lcd.setCursor(12, 1);
@@ -164,14 +166,12 @@ void loop() {
   }
 
 //Tempature Relay Control
-  if (Temp_Read_Upper > Temp_Trigger) {
+  if (Temp_Read_Upper > Temp_Trigger || Temp_Read_Lower > Temp_Trigger) {
     digitalWrite(Fan_Upper, HIGH);
     digitalWrite(Fan_Lower, HIGH);
+    Fan_Timer = Cycle_Time;
   }
-  else if (Temp_Read_Lower > Temp_Trigger && Temp_Read_Upper < Temp_Trigger) {
-    digitalWrite(Fan_Lower, HIGH);
-  }
-  else if (Temp_Read_Upper <Temp_Trigger && Temp_Read_Lower < Temp_Trigger && Fan_Sw_Toggle_Last_State == 1) {
+  else if (Fan_Sw_Toggle_Last_State == 1 && (Fan_Timer + Fan_Write_Delay) < Cycle_Time) {
     digitalWrite(Fan_Lower, LOW);
     digitalWrite(Fan_Upper, LOW);
   }
@@ -200,14 +200,14 @@ void loop() {
         Marquee_Brightness=0;
       }
       analogWrite(Marquee, MQ_Bright[Marquee_Brightness]);
-      EEPROM_Timer = time;
+      EEPROM_Timer = Cycle_Time;
       delay(400);
     }
   Marquee_Sw_Last_Status = Marquee_Sw_Status;
   } 
  
 //Write Brightness Value to EEPROM  
-  if ((EEPROM_Timer + EEPROM_Write_Delay) < time && Marquee_Brightness != EEPROM_Current_Value) {
+  if ((EEPROM_Timer + EEPROM_Write_Delay) < Cycle_Time && Marquee_Brightness != EEPROM_Current_Value) {
     EEPROM.write(Marquee_EEProm, Marquee_Brightness);
     EEPROM_Current_Value = EEPROM.read(Marquee_EEProm);
     if (Marquee_Brightness != EEPROM_Current_Value) {
