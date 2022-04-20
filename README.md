@@ -7,4 +7,7 @@ I designed the cabinet in Solidworks and the PCBs in Eagle, I have included cult
 
 I also generated STLs and Gerbers for anyone that doesn't have access to them fancy CAD programs.
 
-Shout out to my friends Rob and Ruffino for helping me out with the Artwork and CNC/wood working!
+Shout out to my friends Rob and Rufino for helping me out with the Artwork and CNC/wood working!
+
+
+![2020-11-22](https://user-images.githubusercontent.com/20894227/164303987-03da6885-f9d0-476e-abe1-f86260dbaf77.png)
