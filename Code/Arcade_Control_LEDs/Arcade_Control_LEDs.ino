@@ -2,25 +2,12 @@
 #include <EEPROM.h>
 
 //Pin Assignments
-#define P1_A 19      //Player 1 Button A
-#define P1_B 1       //Player 1 Button B
-#define P1_C 2       //Player 1 Button C
-#define P1_X 3       //Player 1 Button X
-#define P1_Y 4       //Player 1 Button Y 
-#define P1_Z 5       //Player 1 Button Z
-#define P1_ST 6      //Player 1 Button START
-#define P1_SL 7      //Player 1 Button SELECT
-#define P2_A  10     //Player 2 Button A
-#define P2_B  11     //Player 2 Button B
-#define P2_C  12     //Player 2 Button C
-#define P2_X  13     //Player 2 Button X 
-#define P2_Y  14     //Player 2 Button Y
-#define P2_Z  15     //Player 2 Button Z
-#define P2_ST  16    //Player 2 Button START
-#define P2_SL  17    //Player 2 Button SELECT
-#define OPT1  8      //Option 1 (QUIT)
-#define OPT2  9      //Option 2 (SAVE)
-#define OPT3  18     //Option 3 (LOAD)
+#define P1_A 1      //Player 1 Button A
+#define P1_B 2       //Player 1 Button B
+#define P1_C 3       //Player 1 Button C
+#define P1_X 4       //Player 1 Button X
+#define P1_Y 5       //Player 1 Button Y 
+#define P1_Z 6       //Player 1 Button Z
 #define SW1  A6      //Toggle Switch 1y
 #define SW2  A7      //Toggle Switch 2
 #define DATA_PIN  22 //Neopixel Data Pin
@@ -28,7 +15,7 @@
 //FastLED Parameters
 #define LED_TYPE    WS2811
 #define COLOR_ORDER GRB
-#define NUM_LEDS    19
+#define NUM_LEDS    6
 #define FRAMES_PER_SECOND  120
 int BRIGHTNESS = 96;
 
@@ -105,16 +92,6 @@ void setup() {
   pinMode(P1_X, INPUT);     //Player 1 Button X
   pinMode(P1_Y, INPUT);     //Player 1 Button Y
   pinMode(P1_Z, INPUT);     //Player 1 Button Z
-  pinMode(P1_ST, INPUT);    //Player 1 Button START
-  pinMode(P1_SL, INPUT);    //Player 1 Button SELECT
-  pinMode(P2_A, INPUT);     //Player 2 Button A
-  pinMode(P2_B, INPUT);     //Player 2 Button B
-  pinMode(P2_C, INPUT);     //Player 2 Button C
-  pinMode(P2_X, INPUT);     //Player 2 Button X
-  pinMode(P2_Y, INPUT);     //Player 2 Button Y
-  pinMode(P2_Z, INPUT);     //Player 2 Button Z
-  pinMode(P2_ST, INPUT);    //Player 2 Button START
-  pinMode(P2_SL, INPUT);    //Player 2 Button SELECT
   pinMode(OPT1, INPUT);     //Option 1 (QUIT)
   pinMode(OPT2, INPUT);     //Option 2 (SAVE)
   pinMode(OPT3, INPUT);     //Option 3 (LOAD)
